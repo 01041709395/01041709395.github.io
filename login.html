@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* 전체 페이지 중앙 정렬 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: rgb(17, 90, 17);
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        .login_inputs {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #btn_login {
+            background-color: rgb(17, 90, 17);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 250px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        #btn_login:hover {
+            background-color: darkgoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h1>Login</h1>
+        <label for="txt_id">ID:</label>
+        <input id="txt_id" class="login_inputs" type="text" placeholder="Enter your ID">
+        <br>
+        <label for="txt_pw">PW:</label>
+        <input id="txt_pw" class="login_inputs" type="password" placeholder="Enter your Password">
+        <br>
+        <input id="btn_login" type="button" value="Login" onclick="handleLogin()">
+    </form>
+
+    <script>
+        function handleLogin() {
+            const idValue = document.getElementById('txt_id').value;
+            const pwValue = document.getElementById('txt_pw').value;
+
+            // 정규표현식 조건
+            const idRegex = /^[a-zA-Z0-9]{4,12}$/; // ID: 영문자+숫자 조합 4~12자
+            const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; // PW: 최소 6자, 문자+숫자 조합
+
+            if (!idRegex.test(idValue)) {
+                alert("ID는 4~12자의 영문자와 숫자만 입력 가능합니다.");
+                return;
+            }
+
+            if (!pwRegex.test(pwValue)) {
+                alert("PW는 최소 6자이며, 숫자와 문자를 포함해야 합니다.");
+                return;
+            }
+
+            alert("로그인 성공! 환영합니다.");
+        }
+    </script>
+</body>
+</html>
