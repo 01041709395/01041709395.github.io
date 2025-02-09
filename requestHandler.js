@@ -74,8 +74,8 @@ function orderlist(response) {
 
 let handle = {}; // key:value
 handle['/'] = index;
-handle['/order'] = order;
-handle['/orderlist'] = orderlist;
+//handle['/order'] = order;
+//handle['/orderlist'] = orderlist;
 
 /* image directory */
 handle['/img/vitamin.jpg'] = redRacket;
